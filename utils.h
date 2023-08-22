@@ -34,18 +34,23 @@ void print_float(va_list list)
 /**
  * print_char - prints int
  * @list: arguments from print_all
+ * @return: The length of the printed string
  */
-void print_char(va_list list)
+int print_char(va_list list)
 {
 	int ch = va_arg(list, int);
 	_putchar(ch);
+	return (1);
 }
 
 /**
  * print_str - prints string
  * @list: arguments from print_all
+ * @return: length of printed string
  */
-void print_str(va_list list) {
+int print_str(va_list list) 
+{
+	int i = 0;
 	char *s = va_arg(list, char *);
 
 	if (s == NULL) 
@@ -55,13 +60,16 @@ void print_str(va_list list) {
 		{
 			_putchar(*nil_str++);
 		}
+		return (0);
 	} 
 	else 
 	{
 		while (*s)
 		{
 			_putchar(*s++);
+			i++;
 		}
+		return i; //strlen is not allowed
 	}
 }
 
