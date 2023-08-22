@@ -3,10 +3,10 @@
 #include <stdarg.h>
 
 /**
- *  * printTypeStruct - Map definition of types
- *   * @type: the type of the variables
- *    * @printer: the function pointer that handles the print
- *     */
+ * printTypeStruct - Map definition of types
+ * @type: the type of the variables
+ * @printer: the function pointer that handles the print
+ */
 typedef struct printTypeStruct
 {
 	char * type;
@@ -14,31 +14,33 @@ typedef struct printTypeStruct
 }printTypeStruct;
 
 /**
- *  * print_int - prints int
- *   * @list: arguments from print_all
- *    */
+ * print_int - prints int
+ * @list: arguments from print_all
+ */
 void print_int(va_list list)
 {
 	// handle int
 }
 
 /**
- *  * print_float - prints float
- *   * @list: arguments from print_all
- *    */
+ * print_float - prints float
+ * @list: arguments from print_all
+ */
 void print_float(va_list list)
 {
 	// handle float
 }
+
 /**
- *  * print_char - prints int
- *   * @list: arguments from print_all
- *    */
+ * print_char - prints int
+ * @list: arguments from print_all
+ */
 void print_char(va_list list)
 {
 	int ch = va_arg(list, int);
 	_putchar(ch);
 }
+
 /**
  * print_str - prints string
  * @list: arguments from print_all
