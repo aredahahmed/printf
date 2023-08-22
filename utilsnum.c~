@@ -49,14 +49,12 @@ void ftoa(float n, char *res, int dec)
 	float fpart;
 	int i = 0;
 	int start, end;
-	int j;
 
 	ipart = (int)n;
 	fpart = n - (float)ipart;
 	i = 0;
 	start = 0;
 	end = 0;
-	j = 0;
 
 	while (ipart)
 	{
@@ -76,7 +74,7 @@ void ftoa(float n, char *res, int dec)
 		res[i] = '.';
 		fpart = fpart * 10;
 		
-		for (j = 0; j < dec; j++)
+		for (int j = 0; j < dec; j++)
 		{
 			int temp = (int)fpart;
 			res[++i] = temp + '0';
