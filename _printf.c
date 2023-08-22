@@ -38,9 +38,12 @@ int _printf(const char *format, ...)
 			len += func(args);
 			i += 2; // % and the handler
 			continue; // skip the following lines
-		}
-	
+		}	
 
+		if (!format[i + 1])
+		{
+			return (-1); // string ended early
+		}
 
 		if (format[i + 1] == '%')
 		{
