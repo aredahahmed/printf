@@ -1,5 +1,5 @@
-#ifndef VARIADIC_FUNCTIONS_H
-#define VARIADIC_FUNCTIONS_H
+#ifndef UTILS_FUNCTIONS_H
+#define UTILS_FUNCTIONS_H
 
 include <stdarg.h>
 
@@ -14,11 +14,11 @@ typedef struct printTypeStruct
 	void (*printer)(va_list);
 }printTypeStruct;
 
-void print_int(va_list args);
-void print_float(va_list args);
+int print_int(va_list args);
+int print_float(va_list args);
 int print_char(va_list args);
 int print_str(va_list args);
 
 int (*get_function(const char *format))(va_list);
 
-#endif // VARIADIC_FUNCTIONS_H
+#endif // UTILS_FUNCTIONS_H
