@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include "_putchar.h"
+#include <stdarg.h>
+#include "utils.h"
 
 /**
  * print_int - prints int
@@ -7,7 +10,9 @@
  */
 int print_int(va_list args)
 {
-	// handle print int
+	(void)args;
+	return (0);
+	/* handle print int*/
 }
 
 /**
@@ -17,7 +22,9 @@ int print_int(va_list args)
  */
 int print_float(va_list args)
 {
-	// handle print float
+	(void)args;
+	return (0);
+	/* handle print float*/
 }
 
 /**

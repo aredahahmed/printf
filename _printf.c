@@ -1,5 +1,8 @@
 #include "main.h"
 #include "utils.h"
+#include <stdlib.h>
+#include "_putchar.h"
+#include <stdarg.h>
 
 /**
  * _printf - a function to print formatted strings
@@ -10,7 +13,8 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	int i = 0, len = 0;
-
+	int (*func)(va_list);
+	
 	if (!format || format == NULL)
 	{
 		return (-1);
@@ -30,19 +34,19 @@ int _printf(const char *format, ...)
 			return (len);
 		}
 		
-		// if we reach %
-		int func = get_function(&format[i + 1]);
+		/* if we reach % */
+		func = get_function(&format[i + 1]);
 
 		if (func)
 		{
 			len += func(args);
-			i += 2; // % and the handler
-			continue; // skip the following lines
+			i += 2; /* % and the handler*/
+			continue; /*skip the following lns*/
 		}	
 
 		if (!format[i + 1])
 		{
-			return (-1); // string ended early
+			return (-1); /* string ended early*/
 		}
 
 		if (format[i + 1] == '%')

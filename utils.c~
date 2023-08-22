@@ -1,74 +1,92 @@
-#include "variadic_functions.h"
 #include <stdio.h>
+#include "_putchar.h"
 #include <stdarg.h>
+#include "utils.h"
 
 /**
- *  * printTypeStruct - Map definition of types
- *   * @type: the type of the variables
- *    * @printer: the function pointer that handles the print
- *     */
-typedef struct printTypeStruct
+ * print_int - prints int
+ * @args: arguments from print_all
+ * @return: length of printed string
+ */
+int print_int(va_list args)
 {
-	char * type;
-	void (*printer)(va_list);
-}printTypeStruct;
-
-/**
- *  * print_int - prints int
- *   * @list: arguments from print_all
- *    */
-void print_int(va_list list)
-{
-	// handle int
+	/* handle print int*/
 }
 
 /**
- *  * print_float - prints float
- *   * @list: arguments from print_all
- *    */
-void print_float(va_list list)
+ * print_float - prints float
+ * @args: arguments from print_all
+ * @return: The length of printed string
+ */
+int print_float(va_list args)
 {
-	// handle float
+	/* handle print float*/
 }
+
 /**
- *  * print_char - prints int
- *   * @list: arguments from print_all
- *    */
-void print_char(va_list list)
+ * print_char - prints char
+ * @args: arguments from print_all
+ * @return: The length of printed string
+ */
+int print_char(va_list args)
 {
-	int ch = va_arg(list, int);
+	int ch = va_arg(args, int);
 	_putchar(ch);
+	return (1);
 }
+
 /**
  * print_str - prints string
- * @list: arguments from print_all
+ * @args: arguments from print_all
+ * @return: The length of the printed string
  */
-void print_str(va_list list) {
-	char *s = va_arg(list, char *);
+int print_str(va_list args)
+{
+	int i = 0;
+	char *s = va_arg(args, char *);
 
-	if (s == NULL) 
+	if (s == NULL)
 	{
 		char *nil_str = "(nil)";
 		while (*nil_str)
 		{
 			_putchar(*nil_str++);
 		}
-	} 
-	else 
+		return (0);
+	}
+	else
 	{
 		while (*s)
 		{
 			_putchar(*s++);
+			i++;
 		}
+		return (i);
 	}
 }
 
-
-static printTypeStruct printType[] = 
+static printTypeStruct printType[] =
 {
 	{ "i", print_int },
 	{ "f", print_float },
 	{ "c", print_char },
 	{ "s", print_str },
 	{ NULL, NULL }
+};
+
+int (*get_function(const char *format))(va_list args)
+{
+	int i = 0;
+
+	while (printType[i].type)
+	{
+		if (printType[i].type[0] == (*format))
+		{
+			return (printType[i].printer);
+		}
+
+		i++;
+	}
+	return NULL;
 }
+

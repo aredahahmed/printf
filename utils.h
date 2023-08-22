@@ -1,7 +1,7 @@
 #ifndef UTILS_FUNCTIONS_H
 #define UTILS_FUNCTIONS_H
 
-include <stdarg.h>
+#include <stdarg.h>
 
 /**
  * printTypeStruct - Map definition of types
@@ -11,7 +11,7 @@ include <stdarg.h>
 typedef struct printTypeStruct
 {
 	char * type;
-	void (*printer)(va_list);
+	int (*printer)(va_list);
 }printTypeStruct;
 
 int print_int(va_list args);
@@ -21,4 +21,4 @@ int print_str(va_list args);
 
 int (*get_function(const char *format))(va_list);
 
-#endif // UTILS_FUNCTIONS_H
+#endif /* UTILS_FUNCTIONS_H*/
