@@ -2,6 +2,7 @@
 #include "_putchar.h"
 #include <stdarg.h>
 #include "utils.h"
+#include "utilsnum.h"
 
 /**
  * print_int - prints int
@@ -10,9 +11,18 @@
  */
 int print_int(va_list args)
 {
-	(void)args;
-	return (0);
-	/* handle print int*/
+	int i = 0;
+	int len = 0;
+	int f = va_arg(args, int);
+	char buffer[50];
+	itoa(f, buffer);
+	
+	for ( i = 0; buffer[i] != '\0'; i++ )
+	{
+		_putchar(buffer[i]);
+		len++;
+	}
+	return (len);
 }
 
 /**
@@ -22,9 +32,17 @@ int print_int(va_list args)
  */
 int print_float(va_list args)
 {
-	(void)args;
-	return (0);
-	/* handle print float*/
+	int i = 0;
+	int len = 0;
+	double f = va_arg(args, double);
+	char buffer[50];
+	ftoa(f, buffer, 3);
+	for (i = 0; buffer[i] != '\0'; i++)
+	{
+		_putchar(buffer[i]);
+		len++;
+	}
+	return (len);
 }
 
 /**
@@ -72,7 +90,7 @@ int print_str(va_list args)
 static printTypeStruct printType[] =
 {
 	{ "i", print_int },
-	{ "f", print_float },
+	{ "d", print_float },
 	{ "c", print_char },
 	{ "s", print_str },
 	{ NULL, NULL }
