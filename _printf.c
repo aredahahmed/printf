@@ -37,7 +37,7 @@ int _printf(const char *format, ...)
 		{
 			len += func(args);
 			i += 2; // % and the handler
-			continue; // skip the handler
+			continue; // skip the following lines
 		}
 	
 
