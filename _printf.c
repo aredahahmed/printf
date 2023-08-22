@@ -1,4 +1,5 @@
 #include "main.h"
+#include "utils.h"
 
 /**
  * _printf - a function to print formatted strings
@@ -28,7 +29,30 @@ int _printf(const char *format, ...)
 		{
 			return (len);
 		}
+		
+		// if we reach %
+		int func = get_function(&format[i + 1]);
+
+		if (func)
+		{
+			len += func(args);
+			i += 2; // % and the handler
+			continue; // skip the handler
+		}
+	
+
+
+		if (format[i + 1] == '%')
+		{
+			i += 2;
+		}
+		else 
+		{
+			i++;
+		}
 	}
+	va_end(args);
+	return (len);
 }
 
 

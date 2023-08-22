@@ -72,3 +72,18 @@ static printTypeStruct printType[] =
 	{ "s", print_str },
 	{ NULL, NULL }
 }
+
+int (*get_function(const char *format))(va_list)
+{
+	int i = 0;
+
+	while(printType.type)
+	{
+		if (printType[i].type[0] == (*format))
+		{
+			return (printType[i].printer);
+		}
+		i++;
+	}
+	return NULL;
+}

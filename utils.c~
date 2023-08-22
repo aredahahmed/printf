@@ -19,7 +19,7 @@ typedef struct printTypeStruct
  *    */
 void print_int(va_list list)
 {
-	printf("%d", va_arg(list, int));
+	// handle int
 }
 
 /**
@@ -28,7 +28,7 @@ void print_int(va_list list)
  *    */
 void print_float(va_list list)
 {
-		printf("%f", va_arg(list, double));
+	// handle float
 }
 /**
  *  * print_char - prints int
@@ -36,7 +36,8 @@ void print_float(va_list list)
  *    */
 void print_char(va_list list)
 {
-	printf("%c", va_arg(list, int));
+	int ch = va_arg(list, int);
+	_putchar(ch);
 }
 /**
  * print_str - prints string
@@ -50,14 +51,14 @@ void print_str(va_list list) {
 		char *nil_str = "(nil)";
 		while (*nil_str)
 		{
-			putchar(*nil_str++);
+			_putchar(*nil_str++);
 		}
 	} 
 	else 
 	{
 		while (*s)
 		{
-			putchar(*s++);
+			_putchar(*s++);
 		}
 	}
 }
